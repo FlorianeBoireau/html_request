@@ -18,12 +18,12 @@ app.post("/languages", (req, res) => {
 
 //  TODO: GET /languages (renvoie la liste des langages de la database en json)
 app.get("/languages", (req, res) => {
-  res.status(201).json({languages: languages});
+  res.status(201).json({database});
 });
 
 // TODO: PUT /languages/:name (remplace le langage passé dans l'url par celui passé dans le body, par exemple /languages/html avec {"language": "c++"}, remplace html par c++ dans la database)
 
-app.put("/languages/ :name",(req, res) => {
+app.put("/languages/:name",(req, res) => {
   if(!req.params.name) {
     res.status(400).send("info manquante");
   } else if(!req.body.language) {
@@ -39,22 +39,11 @@ app.put("/languages/ :name",(req, res) => {
 
 // TODO: DELETE /languages (supprime le langage passé dans le body, par exemple {"language": "c++"})
 
-// app.delete("/languages", (req, res) => {
-  
-//   const name = parseInt(req.params.name); // Parse ID from URL parameter
-//   const index = database.indexOf(req.params.name);
-  
-//     // Check if data exists for the ID
-//     if (index === -1) {
-//       return res.status(404).send("Data not found");
-//     }
-  
-//     // Remove data from the array using splice
-//     data.splice(index, 1);
-  
-//     res.json({ message: "Data deleted successfully" });
-  
-// })
+app.delete("/languages/:name", (req, res) => {
+  const indexLanguage = database.indexOf(req.params.name);
+  database[indexLanguage] =req.body.language;
+  res.status(200).send("le language a été supprimé");
+})
 
 // 💡 N'hésite pas à aller sur MDN pour choisir les bonnes méthodes de array pour modifier database
 
