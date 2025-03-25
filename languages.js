@@ -7,12 +7,12 @@ async function giveLanguages (){
     });
 
     if(response.status === 200) {
-        console.log('language bien envoyé'),
-    }else if(response.status === 408) {
-        console.log('language non trouvé'),
-    }else{
-        console.log('il y as eu un problème'),
-    }
+        console.log('language bien envoyé');
+    } else if (response.status === 408) {
+        console.log('language non trouvé');
+    } else {
+        console.log('il y as eu un problème');
+    };
 
     console.log('Response: ', response);
 
